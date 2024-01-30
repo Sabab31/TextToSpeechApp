@@ -29,8 +29,9 @@ def clickedRead():
     except:
         lblsp.config(text = "The Speech Tempo value is null!! Please set the value first!!")
         
-
-readButton=Button(root,text = "Read",command=clickedRead)
+import threading
+readButton=Button(root,text = "Read",command=lambda: threading.Thread(target=clickedRead, daemon=True).start())
+#readButton=Button(root,text = "Read",command=clickedRead)
 readButton.pack()
 
 
